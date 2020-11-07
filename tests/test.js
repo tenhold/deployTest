@@ -1,17 +1,15 @@
-'use strict';
+const request = require('supertest');
+const express = require('express');
 
-const supertest = require('supertest'); 
-const test = require('unit.js');
-const app = require('../app.js');
+const app = express();
 
-const request = supertest(app);
-
-describe('Tests app', function() {
-  it('verifies get', function(done) {
-    request.get('/').expect(200).end(function(err, result) {
-      test.string(result.text).contains('Congratulations');
-      test.value(result).hasHeader('content-type', 'text/html');
-      done(err);
-    });
-  });
+app.get('/', function (req, res) {
+  res.status(200);
 });
+
+request(app)
+  .expect(200)
+  .end(function (err, res) {
+    if (err) throw err;
+  });
+
