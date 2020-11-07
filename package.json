@@ -17,7 +17,7 @@
   },
   "scripts": {
     "start": "nodemon server/index.js",
-    "start-prod": "node server/index.js"
+    "start-prod": "node server/index.js",
     "dev": "webpack --mode development --watch",
     "build": "webpack --mode production",
     "test": "mocha --recursive tests --exit"
